@@ -142,6 +142,9 @@ class Bomb:
 
 
 class Score:
+    """
+    スコアを画面上に追加するためのクラス
+    """
     def __init__(self, score = 0):
         self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self.txt = self.fonto.render(f"スコア：{score}", True, (0, 0, 255))
