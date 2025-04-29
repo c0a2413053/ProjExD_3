@@ -151,6 +151,18 @@ class Score:
         screen.blit(self.txt, [100, HEIGHT-50])
 
 
+class Explosion:
+
+    def __init__(self):
+        self.img = [
+            pg.image.load(f"fig/explosion.gif"),
+            pg.transform.flip(f"fig/explosion.gif", True, True),
+        ]
+        self.rct = self.img.get_rect()
+        self.rct.center = rct
+        self.life = 20
+
+
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
@@ -168,10 +180,9 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
-            # if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+            if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                 # スペースキー押下でBeamクラスのインスタンス生成
-        beams.append(Beam(bird))
-        print(len(beams))            
+                beams.append(Beam(bird))
         screen.blit(bg_img, [0, 0])
         
         for bomb_i, bomb in enumerate(bombs):
